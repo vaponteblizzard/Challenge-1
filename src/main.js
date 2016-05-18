@@ -10,14 +10,21 @@ function print(x) {
 // return "Your total comes to " + total;
 // Hint to get a decimal place of 2 you can use
 // Math.round(numberWithDecimal * 100)/100
-// i.e. Math.round(15.051102 * 100)/100 becomes 15.05,
+// i.e. Math.round(15.051102 * 100)/100 becomes 15.05
+// billTotal(21.55); // "Your total comes to $26.83"
 
+function billTotal(cost) {
+	var tip = cost * 0.15;
+	var tax = cost * 0.095;
+	var total = cost + tip + tax
 
-function billTotal(total) {
-	// write code here
+	// rounds total to nearest hundredth
+	var roundTotal = Math.round(total * 100) / 100;
+
+	return "Your total comes to $" + roundTotal + ".";
 }
 
-// billTotal(21.55); // "Your total comes to $26.83"
+
 
 // Implement the function called animalNoise that accepts two 
 // parameters: a type of animal and an emotion that indicates 
@@ -34,13 +41,28 @@ function billTotal(total) {
 // If you're feeling uninspired, feel free to use "smileys" to convey emotion.
 
 function animalNoise(animal, emotion) {
-// TODO: your code here
+	if ( animal === "dog" ) {
+		if ( emotion === "happy" ) {
+			return "Woof!";
+		}
+		if ( emotion === "angry" ) {
+			return "Grrr!";
+		}
+	}
+	if ( animal === "cat" ) {
+		if ( emotion === "happy" ) {
+			return "Meow!";
+		}
+		if ( emotion === "angry" ) {
+			return "Hiss!";
+		}
+	}
 }
 
 
 // The digital sum of a number is the sum of all its digits, 
 // e.g. digitalSum(1337) should output 14: 1 + 3 + 3 + 7. 
-// Use any of the methods of reptition that we have covered so 
+// Use any of the methods of repetition that we have covered so 
 // far (no while loops) to implement this function.
 
 // HINTS: Try the following at a console:
@@ -55,5 +77,14 @@ function animalNoise(animal, emotion) {
 // return, e.g. digitalSum(8)?
 
 function digitalSum(num) {
-  // TODO: your code here
-}
+  var remainder = num % 10;
+  var total = remainder;
+
+  if ( num >= 10 ) {
+    var restOfNum = Math.floor(num / 10);
+    total += digitalSum(restOfNum);
+  }
+  return total;
+ }
+
+
