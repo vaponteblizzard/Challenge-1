@@ -77,8 +77,8 @@ function animalNoise(animal, emotion) {
 // return, e.g. digitalSum(8)?
 
 function digitalSum(num) {
-  var remainder = num % 10;
-  var total = remainder;
+  
+  var total = num % 10;
 
   if ( num >= 10 ) {
     var restOfNum = Math.floor(num / 10);
